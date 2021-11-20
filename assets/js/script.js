@@ -1,14 +1,22 @@
 var displayWeather = function (city, data) {
-  console.log(data.weather[0]);
+  console.log(data);
   var iconCode = data.weather[0].icon;
   var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
   // console.log(iconURL)
+
   var cityName = document.getElementById("cityName");
   var cityTemp = document.getElementById("cityTemp");
+  var cityHumid = document.getElementById("cityHumid");
+  var cityWind = document.getElementById("cityWind");
+  var cityUV = document.getElementById("cityUV");
+
   var userInputCityName = document.getElementById("userInputCityName");
   document.getElementById("weatherIcon").setAttribute("src", iconURL);
   cityName.textContent = data.name;
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
+  cityHumid.textContent = data.main.humidity; + "% Humidity"
+  cityWind.textContent = data.wind.speed; + "mph"
+  cityUV.textContent = "blah"
 };
 
 var searchButtonEl = document.getElementById("userCityNameSubmit");
@@ -17,7 +25,7 @@ var callCity = function (city) {
   var apiKey = "&appid=0cab3455fdc5081541be5d657005bb3b";
   var callCityURL =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
-    city +
+    city + 
     apiKey +
     "&units=imperial";
   fetch(callCityURL)
@@ -49,12 +57,13 @@ var formSubmitHandler = function (event) {
   if (userSearchCityName) {
     callCity(userSearchCityName);
     userInputCityName.value = "";
-    // callCity(userSearchCityName);
-    //console.log(event);
+
     // get local storage
     var citiesPreviouslySearched = localStorage.getItem("cityLocalStorage");
+
     // adding city name to list of previously searched names
     citiesPreviouslySearched.push(userSearchCityName);
+
     //adding City name to local storage
     localStorage.setItem("cityLocalStorage", citiesPreviouslySearched);
   } else {
