@@ -23,6 +23,7 @@ var displayWeather = function (city, data) {
 
 var searchButtonEl = document.getElementById("userCityNameSubmit");
 
+//api call to get the city's weather
 var callCity = function (city) {
   var apiKey = "&appid=0cab3455fdc5081541be5d657005bb3b";
   var callCityURL =
@@ -45,8 +46,9 @@ var callCity = function (city) {
       alert("Unable to connect");
     });
 };
-localStorage.setItem("cityLocalStorage", JSON.stringify([]));
 
+//initialize local storage that holds city names that have been searched
+localStorage.setItem("cityLocalStorage", LOCALSTORAGETEST);
 
 //search history array as a global variable
 //add to search history global variable on click, then
@@ -58,22 +60,30 @@ var formSubmitHandler = function (event) {
   var userInputCityName = document.getElementById("userInputCityName");
   //console.log(userInputCityName);
 
-  //get value from input element and takes away any spaces on the left or right side, but not in the middle
+  //get value from input element, userInputCityName, and takes away any spaces on the left or right side, but not in the middle
   var userSearchCityName = userInputCityName.value.trim();
+  //console.log(userInputCityName.value.trim());
+  //console.log(userSearchCityName);
 
   if (userSearchCityName) {
     callCity(userSearchCityName);
     userInputCityName.value = "";
 
-    // get local storage
+    // get local storage of previously searched cities
     var citiesPreviouslySearched = localStorage.getItem("cityLocalStorage");
+    console.log(citiesPreviouslySearched);
 
-    console.log(JSON.parse(citiesPreviouslySearched));
+    // console.log(JSON.stringify(citiesPreviouslySearched));
+
     // adding city name to list of previously searched names
-    citiesPreviouslySearched.push(userSearchCityName);
+    //citiesPreviouslySearched.push(userSearchCityName);
 
+    // localStorage.setItem("facts", JSON.stringify({firstNum: [1, 2, 3], planet: "neptune"}));
     //adding City name to local storage
-    localStorage.setItem("cityLocalStorage", citiesPreviouslySearched);
+    localStorage.setItem(
+      "cityLocalStorage",
+      JSON.stringify(citiesPreviouslySearched)
+    );
   } else {
     alert("Please enter a city name");
   }
