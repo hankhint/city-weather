@@ -1,9 +1,9 @@
 var displayWeather = function (city, data) {
-  //  console.log(data);
+  //weather icon data
   var iconCode = data.weather[0].icon;
   var iconURL = "http://openweathermap.org/img/w/" + iconCode + ".png";
-  // console.log(iconURL)
 
+  //setting keys for where to put the data
   var cityName = document.getElementById("cityName");
   var cityTemp = document.getElementById("cityTemp");
   var cityHumid = document.getElementById("cityHumid");
@@ -11,19 +11,46 @@ var displayWeather = function (city, data) {
   //var cityUV = document.getElementById("cityUV");
 
   var userInputCityName = document.getElementById("userInputCityName");
+  //putting weather icon in html
   document.getElementById("weatherIcon").setAttribute("src", iconURL);
+
+  //putting weather data in html
   cityName.textContent = data.name;
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
-  cityHumid.textContent = data.main.humidity
-  + " \% Humidity";
-  cityWind.textContent = data.wind.speed
-  + " mph";
+  cityHumid.textContent = data.main.humidity + " % Humidity";
+  cityWind.textContent = data.wind.speed + " mph";
   //cityUV.textContent = "blah"
+};
+
+//display five day forecast
+var displayFiveDayForecast = function (fiveday) {
+  
+//to do 
+// set up div for all five day forecasts
+//set up write html to div
+//set up for loop to loop through each different part
+
+
+  //setting keys for where to put the data in the HTML
+  var fiveDayDisplay = document.getElementById("fiveDayDisplay");
+  // var oneDayOut = document.getElementById("oneDayOut");
+  // var twoDayOut = document.getElementById("twoDayOut");
+  // var threeDayOut = document.getElementById("threeDayOut");
+  // var fourDayOut = document.getElementById("fourDayOut");
+  // var fiveDayOut = document.getElementById("fiveDayOut");
+
+  //put data in the HTML
+  
+  //code that works and gets five day forecast info from the fetch request payload
+  //fiveday.list[0].main.temp ,fiveday.list[0].wind.speed ,fiveday.list[0].main.humidity;
+var hello = "<h1>hello</h1>"";
+  fiveDayDisplay.append = hello;
+
 };
 
 var searchButtonEl = document.getElementById("userCityNameSubmit");
 
-//api call to get the city's weather
+//api call to get the city's weather and five day forecast
 var callCity = function (city) {
   var apiKey = "&appid=0cab3455fdc5081541be5d657005bb3b";
   var callCityURL =
@@ -35,8 +62,21 @@ var callCity = function (city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          // console.log(data);
           displayWeather(city, data);
+
+          //get fiveday forecast
+          fetch(
+            "https://api.openweathermap.org/data/2.5/forecast?q=" +
+              city +
+              "&appid=0cab3455fdc5081541be5d657005bb3b" +
+              "&units=imperial"
+          ).then(function (response) {
+            if (response.ok) {
+              response.json().then(function (fiveday) {
+                displayFiveDayForecast(fiveday);
+              });
+            }
+          });
         });
       } else {
         alert("Error:" + response.statusText);
@@ -49,9 +89,7 @@ var callCity = function (city) {
 
 //initialize local storage that holds city names that have been searched
 if (localStorage.getItem("cityLocalStorage") == undefined) {
-
-localStorage.setItem("cityLocalStorage", JSON.stringify([]));
-
+  localStorage.setItem("cityLocalStorage", JSON.stringify([]));
 }
 
 //search history array as a global variable
@@ -73,22 +111,30 @@ var formSubmitHandler = function (event) {
     callCity(userSearchCityName);
     userInputCityName.value = "";
 
-    // get local storage of previously searched cities
-    var citiesPreviouslySearched = JSON.parse(localStorage.getItem("cityLocalStorage"));
-    //console.log(citiesPreviouslySearched);
+    //creating button for searched city
+    let btn = document.createElement("button");
+    btn.innerHTML = userSearchCityName;
+    btn.type = "submit";
+    btn.name = userSearchCityName + "formBtn";
+    document.body.appendChild(btn);
+    //creating on click event api call
+    btn.onclick = function () {
+      callCity(userSearchCityName);
+    };
 
-    // console.log(JSON.stringify(citiesPreviouslySearched));
+    // get local storage of previously searched cities
+    var citiesPreviouslySearched = JSON.parse(
+      localStorage.getItem("cityLocalStorage")
+    );
 
     // adding city name to list of previously searched names
     citiesPreviouslySearched.push(userSearchCityName);
 
-    // localStorage.setItem("facts", JSON.stringify({firstNum: [1, 2, 3], planet: "neptune"}));
     //adding City name to local storage along with the past searched cities
     localStorage.setItem(
       "cityLocalStorage",
       JSON.stringify(citiesPreviouslySearched)
     );
-    
   } else {
     alert("Please enter a city name");
   }
