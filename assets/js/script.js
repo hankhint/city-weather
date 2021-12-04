@@ -14,10 +14,10 @@ var displayWeather = function (city, data) {
   document.getElementById("weatherIcon").setAttribute("src", iconURL);
   cityName.textContent = data.name;
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
-  cityHumid.textContent = data.main.humidity;
-  +"% Humidity";
-  cityWind.textContent = data.wind.speed;
-  +"mph";
+  cityHumid.textContent = data.main.humidity
+  + " \% Humidity";
+  cityWind.textContent = data.wind.speed
+  + " mph";
   //cityUV.textContent = "blah"
 };
 
@@ -78,7 +78,7 @@ var formSubmitHandler = function (event) {
     console.log(citiesPreviouslySearched);
 
     // console.log(JSON.stringify(citiesPreviouslySearched));
-citiesPreviouslySearched[]
+
     // adding city name to list of previously searched names
     citiesPreviouslySearched.push(userSearchCityName);
 
