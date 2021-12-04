@@ -33,18 +33,35 @@ var displayFiveDayForecast = function (fiveday) {
 
   //setting keys for where to put the data in the HTML
   var fiveDayDisplay = document.getElementById("fiveDayDisplay");
-  // var oneDayOut = document.getElementById("oneDayOut");
-  // var twoDayOut = document.getElementById("twoDayOut");
-  // var threeDayOut = document.getElementById("threeDayOut");
-  // var fourDayOut = document.getElementById("fourDayOut");
-  // var fiveDayOut = document.getElementById("fiveDayOut");
+
 
   //put data in the HTML
   
   //code that works and gets five day forecast info from the fetch request payload
   //fiveday.list[0].main.temp ,fiveday.list[0].wind.speed ,fiveday.list[0].main.humidity;
-var hello = "<h1>hello</h1>"";
-  fiveDayDisplay.append = hello;
+
+
+
+// var resetFiveDay = "loading";
+// fiveDayDisplay.appendChild();
+// clearing out the old five day for the new five day
+//document.getElementById(fiveDayDisplay).innerHTML = "";
+fiveDayDisplay.innerText = "";
+
+//loop through five day forecast and push to html
+for (let i = 1; i < 6; i++) {
+let fivedayEL = document.createElement('li');
+fivedayEL.textContent = fiveday.list[i].main.temp + " F "  + fiveday.list[i].wind.speed + " mph " + fiveday.list[i].main.humidity + " perecent humidity";
+fiveDayDisplay.appendChild(fivedayEL);
+}
+
+//fiveDayDisplay to have three h1s, one for each part of the five day 5dayforecast
+
+
+
+
+//
+
 
 };
 
