@@ -48,7 +48,11 @@ var callCity = function (city) {
 };
 
 //initialize local storage that holds city names that have been searched
-localStorage.setItem("cityLocalStorage", LOCALSTORAGETEST);
+if (localStorage.getItem("cityLocalStorage") == undefined) {
+
+localStorage.setItem("cityLocalStorage", JSON.stringify([]));
+
+}
 
 //search history array as a global variable
 //add to search history global variable on click, then
@@ -70,13 +74,13 @@ var formSubmitHandler = function (event) {
     userInputCityName.value = "";
 
     // get local storage of previously searched cities
-    var citiesPreviouslySearched = localStorage.getItem("cityLocalStorage");
+    var citiesPreviouslySearched = JSON.parse(localStorage.getItem("cityLocalStorage"));
     console.log(citiesPreviouslySearched);
 
     // console.log(JSON.stringify(citiesPreviouslySearched));
-
+citiesPreviouslySearched[]
     // adding city name to list of previously searched names
-    //citiesPreviouslySearched.push(userSearchCityName);
+    citiesPreviouslySearched.push(userSearchCityName);
 
     // localStorage.setItem("facts", JSON.stringify({firstNum: [1, 2, 3], planet: "neptune"}));
     //adding City name to local storage
