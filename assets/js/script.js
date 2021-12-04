@@ -75,7 +75,7 @@ var formSubmitHandler = function (event) {
 
     // get local storage of previously searched cities
     var citiesPreviouslySearched = JSON.parse(localStorage.getItem("cityLocalStorage"));
-    console.log(citiesPreviouslySearched);
+    //console.log(citiesPreviouslySearched);
 
     // console.log(JSON.stringify(citiesPreviouslySearched));
 
@@ -83,11 +83,12 @@ var formSubmitHandler = function (event) {
     citiesPreviouslySearched.push(userSearchCityName);
 
     // localStorage.setItem("facts", JSON.stringify({firstNum: [1, 2, 3], planet: "neptune"}));
-    //adding City name to local storage
+    //adding City name to local storage along with the past searched cities
     localStorage.setItem(
       "cityLocalStorage",
       JSON.stringify(citiesPreviouslySearched)
     );
+    
   } else {
     alert("Please enter a city name");
   }
