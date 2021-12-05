@@ -25,27 +25,14 @@ var displayWeather = function (city, data) {
 //display five day forecast
 var displayFiveDayForecast = function (fiveday) {
   
-//to do 
-// set up div for all five day forecasts
-//set up write html to div
-//set up for loop to loop through each different part
-
-
   //setting keys for where to put the data in the HTML
   var fiveDayDisplay = document.getElementById("fiveDayDisplay");
-
-
-  //put data in the HTML
   
   //code that works and gets five day forecast info from the fetch request payload
   //fiveday.list[0].main.temp ,fiveday.list[0].wind.speed ,fiveday.list[0].main.humidity;
 
-
-
-// var resetFiveDay = "loading";
-// fiveDayDisplay.appendChild();
 // clearing out the old five day for the new five day
-//document.getElementById(fiveDayDisplay).innerHTML = "";
+
 fiveDayDisplay.innerText = "";
 
 //loop through five day forecast and push to html
@@ -54,14 +41,6 @@ let fivedayEL = document.createElement('li');
 fivedayEL.textContent = fiveday.list[i].main.temp + " F "  + fiveday.list[i].wind.speed + " mph " + fiveday.list[i].main.humidity + " perecent humidity";
 fiveDayDisplay.appendChild(fivedayEL);
 }
-
-//fiveDayDisplay to have three h1s, one for each part of the five day 5dayforecast
-
-
-
-
-//
-
 
 };
 
@@ -109,11 +88,7 @@ if (localStorage.getItem("cityLocalStorage") == undefined) {
   localStorage.setItem("cityLocalStorage", JSON.stringify([]));
 }
 
-//search history array as a global variable
-//add to search history global variable on click, then
-
 var formSubmitHandler = function (event) {
-  // event.preventDefault();
 
   //taking input from html and putting it into javascript
   var userInputCityName = document.getElementById("userInputCityName");
@@ -121,8 +96,6 @@ var formSubmitHandler = function (event) {
 
   //get value from input element, userInputCityName, and takes away any spaces on the left or right side, but not in the middle
   var userSearchCityName = userInputCityName.value.trim();
-  //console.log(userInputCityName.value.trim());
-  //console.log(userSearchCityName);
 
   if (userSearchCityName) {
     callCity(userSearchCityName);
@@ -134,6 +107,7 @@ var formSubmitHandler = function (event) {
     btn.type = "submit";
     btn.name = userSearchCityName + "formBtn";
     document.body.appendChild(btn);
+
     //creating on click event api call
     btn.onclick = function () {
       callCity(userSearchCityName);
@@ -156,26 +130,5 @@ var formSubmitHandler = function (event) {
     alert("Please enter a city name");
   }
 };
-
-//dot notation v bracket notation
-// bracket notation: can use a variable as the key
-//dot notation: can't have spaces in the key name, nor can you use a variable as the key
-
-// localStorage.setItem("facts", JSON.stringify({firstNum: [1, 2, 3], planet: "neptune"}));
-
-// var hankStuff = JSON.parse(localStorage.getItem("facts"));
-
-// console.log(hankStuff["firstNum"]);
-// console.log(hankStuff.firstNum);
-
-// //key -- value
-// //string(first argument in localstorage.setitem) is the name of the key in localStorage
-// localStorage.setItem("alphabet", 123);
-
-//stringify
-// //parseInt parseFloat
-// console.log(parseInt(localStorage.getItem("alphabet")));
-// console.log(typeof 123);
-// //typeof is an operator
 
 searchButtonEl.addEventListener("click", formSubmitHandler);
