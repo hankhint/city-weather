@@ -1,3 +1,5 @@
+// sets today's weather to HTML
+
 var displayWeather = function (city, data) {
   //weather icon data
   var iconCode = data.weather[0].icon;
@@ -10,7 +12,9 @@ var displayWeather = function (city, data) {
   var cityWind = document.getElementById("cityWind");
   //var cityUV = document.getElementById("cityUV");
 
+  //getting user input
   var userInputCityName = document.getElementById("userInputCityName");
+
   //putting weather icon in html
   document.getElementById("weatherIcon").setAttribute("src", iconURL);
 
@@ -24,29 +28,58 @@ var displayWeather = function (city, data) {
 
 //display five day forecast
 var displayFiveDayForecast = function (fiveday) {
-  
   //setting keys for where to put the data in the HTML
   var fiveDayDisplay = document.getElementById("fiveDayDisplay");
-  
+
   //code that works and gets five day forecast info from the fetch request payload
   //fiveday.list[0].main.temp ,fiveday.list[0].wind.speed ,fiveday.list[0].main.humidity;
 
-// clearing out the old five day for the new five day
+  // clearing out the old five day for the new five day
 
-fiveDayDisplay.innerText = "";
+  fiveDayDisplay.innerText = "";
 
-//loop through five day forecast and push to html
-for (let i = 1; i < 6; i++) {
-let fivedayEL = document.createElement('li');
-fivedayEL.textContent = fiveday.list[i].main.temp + " F "  + fiveday.list[i].wind.speed + " mph " + fiveday.list[i].main.humidity + " perecent humidity";
-fiveDayDisplay.appendChild(fivedayEL);
-}
+  //loop through five day forecast and push to html
+  for (let i = 0; i < 42; i += 7) {
+    let fivedayEL = document.createElement("ul");
 
+    var weatherIcon =
+      "http://openweathermap.org/img/w/" +
+      fiveday.list[i].weather[0].icon +
+      ".png";
+
+    let fivedayIcon = document.createElement("img");
+    fivedayIcon.src = weatherIcon;
+
+    //     var utcSeconds = 1234567890;
+    // var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
+    // d.setUTCSeconds(utcSeconds);
+
+    //converting UTC seconds into date without time of day
+    var fivedayseconds = fiveday.list[i].dt;
+    var fivedaydate = new Date(0);
+    fivedaydate.setUTCSeconds(fivedayseconds);
+
+    //console.log(fivedaydate.toDateString());
+    //console.log(fiveday.list[i].weather[0].icon);
+
+    fivedayEL.textContent =
+      // fiveday.list[i].dt_txt +
+
+      fivedaydate.toDateString() +
+      fiveday.list[i].main.temp +
+      " F " +
+      fiveday.list[i].wind.speed +
+      " mph " +
+      fiveday.list[i].main.humidity +
+      " perecent humidity";
+    fiveDayDisplay.appendChild(fivedayIcon);
+    fiveDayDisplay.appendChild(fivedayEL);
+  }
 };
 
 var searchButtonEl = document.getElementById("userCityNameSubmit");
 
-//api call to get the city's weather and five day forecast
+//api call to get the city's current weather and five dayforecast
 var callCity = function (city) {
   var apiKey = "&appid=0cab3455fdc5081541be5d657005bb3b";
   var callCityURL =
@@ -54,6 +87,8 @@ var callCity = function (city) {
     city +
     apiKey +
     "&units=imperial";
+
+  //get current weather
   fetch(callCityURL)
     .then(function (response) {
       if (response.ok) {
@@ -70,6 +105,7 @@ var callCity = function (city) {
             if (response.ok) {
               response.json().then(function (fiveday) {
                 displayFiveDayForecast(fiveday);
+                console.log(fiveday);
               });
             }
           });
@@ -89,7 +125,6 @@ if (localStorage.getItem("cityLocalStorage") == undefined) {
 }
 
 var formSubmitHandler = function (event) {
-
   //taking input from html and putting it into javascript
   var userInputCityName = document.getElementById("userInputCityName");
   //console.log(userInputCityName);
