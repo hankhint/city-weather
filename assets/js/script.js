@@ -1,4 +1,5 @@
 // sets today's weather to HTML
+var cityUV = document.getElementById("cityUV");
 
 var displayWeather = function (city, data) {
   //weather icon data
@@ -10,7 +11,19 @@ var displayWeather = function (city, data) {
   var cityTemp = document.getElementById("cityTemp");
   var cityHumid = document.getElementById("cityHumid");
   var cityWind = document.getElementById("cityWind");
-  //var cityUV = document.getElementById("cityUV");
+  // fetch(
+  //   "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+  //     data.coord.lat +
+  //     "&lon=" +
+  //     data.coord.lon +
+  //     "&exclude=hourly,daily&appid=0cab3455fdc5081541be5d657005bb3b"
+  // ).then(function (response) {
+  //   if (response.ok) {
+  //     response.json().then(function (uvInfo) {
+  //       cityUV.textContent = uvInfo.current.uvi;
+  //     });
+  //   }
+  // });
 
   //getting user input
   var userInputCityName = document.getElementById("userInputCityName");
@@ -23,7 +36,7 @@ var displayWeather = function (city, data) {
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
   cityHumid.textContent = data.main.humidity + " % Humidity";
   cityWind.textContent = data.wind.speed + " mph";
-  //cityUV.textContent = "blah"
+  // cityUV.textContent = "blah"
 };
 
 //display five day forecast
@@ -94,6 +107,20 @@ var callCity = function (city) {
       if (response.ok) {
         response.json().then(function (data) {
           displayWeather(city, data);
+         
+          // fetch(
+          //   "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+          //     data.coord.lat +
+          //     "&lon=" +
+          //     data.coord.lon +
+          //     "&exclude=hourly,daily&appid=0cab3455fdc5081541be5d657005bb3b"
+          // ).then(function (response) {
+          //   if (response.ok) {
+          //     response.json().then(function (uvInfo) {
+          //       cityUV.textContent = uvInfo.current.uvi;
+          //     });
+          //   }
+          // });
 
           //get fiveday forecast
           fetch(
@@ -103,9 +130,10 @@ var callCity = function (city) {
               "&units=imperial"
           ).then(function (response) {
             if (response.ok) {
+              //send response to display function
               response.json().then(function (fiveday) {
                 displayFiveDayForecast(fiveday);
-                console.log(fiveday);
+                //console.log(fiveday);
               });
             }
           });
