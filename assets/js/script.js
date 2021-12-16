@@ -32,7 +32,7 @@ var displayWeather = function (city, data) {
   document.getElementById("weatherIcon").setAttribute("src", iconURL);
 
   //putting weather data in html
-  cityName.textContent = data.name;
+  cityName.textContent = "Current Weather in " + data.name;
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
   cityHumid.textContent = data.main.humidity + " % Humidity";
   cityWind.textContent = data.wind.speed + " mph";
@@ -52,7 +52,8 @@ var displayFiveDayForecast = function (fiveday) {
   fiveDayDisplay.innerText = "";
 
   //loop through five day forecast and push to html
-  for (let i = 0; i < 42; i += 7) {
+  for (let i = 0; i < 41; i += 8) {
+    console.log(i);
     let fivedayEL = document.createElement("ul");
 
     var weatherIcon =
@@ -168,8 +169,9 @@ var formSubmitHandler = function (event) {
     let btn = document.createElement("button");
     btn.innerHTML = userSearchCityName;
     btn.type = "submit";
+    btn.className = "collection-item";
     btn.name = userSearchCityName + "formBtn";
-    document.body.appendChild(btn);
+    searchedCityList.appendChild(btn);
 
     //creating on click event api call
     btn.onclick = function () {
@@ -180,7 +182,7 @@ var formSubmitHandler = function (event) {
     var citiesPreviouslySearched = JSON.parse(
       localStorage.getItem("cityLocalStorage")
     );
-
+console.log(citiesPreviouslySearched)
     // adding city name to list of previously searched names
     citiesPreviouslySearched.push(userSearchCityName);
 

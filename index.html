@@ -11,14 +11,15 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 
 
-  <title>City Weather Dashboard</title>
+  <title >City Weather Dashboard</title>
 </head>
 
 <body>
-
-  <header>
-    <h1 class="r">City Weather Dashboard</h1>
+<div class="nav-wrapper">
+  <header >
+    <h1 class="brand-logo center">City Weather Dashboard</h1>
   </header>
+</div>
 
   <!-- <div class="row">
       <form class="col s12">
@@ -40,7 +41,7 @@
 
         <div class="input-field col s6"> -->
           <input placeholder="Enter City Name to get the weather" id="userInputCityName" type="text" class="validate">
-          <button id="userCityNameSubmit">Search City's Weather</button>
+          <button class="waves-effect waves-light btn" id="userCityNameSubmit">Search City's Weather</button>
          <!-- <label for="userInputCityName">City Name</label> -->
         <!-- </div>
       </div>
@@ -48,27 +49,27 @@
   </form> -->
 
   <!-- Placeholders for weather info-->
-  <div id="cityName"></div>
+  <div>
+  <h4 id="cityName"></h4>
   <img id="weatherIcon"></div>
   <div id="cityTemp"></div>
   <div id="weatherIcon"></div>
   <div id="cityHumid"></div>
   <div id="cityWind"></div>
-  <div id="cityUV"></div-->
+  <div id="cityUV"></div>
+</div>
+ <!-- DISPLAYING FIVE DAY FORE
+  CAST-->
+ <div class="col s12" id="fiveDayDisplay">
+ 
+</div>
 
   <!-- UNORDERED LIST OF SEARCHED CITIES-->
-  <ul id="searchedCityList">
+  <ul class="collection" id="searchedCityList">
 
   </ul>
 
-  <!-- DISPLAYING FIVE DAY FORECAST-->
-  <div id="fiveDayDisplay">
-    <!-- <div id="oneDayOut"></div>
-    <div id="twoDayOut"></div>
-    <div id="threeDayOut"></div>
-    <div id="fourDayOut"></div>
-    <div id="fiveDayOut"></div> -->
-  </div>
+ 
 
   <script src="assets/js/script.js"> </script>
 </body>
