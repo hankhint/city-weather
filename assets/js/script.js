@@ -50,10 +50,13 @@ var displayFiveDayForecast = function (fiveday) {
   // clearing out the old five day for the new five day
 
   fiveDayDisplay.innerText = "";
-
+  //added this line to create UL for new LI elements
+var fiveDayUL = document.createElement("ul");
   //loop through five day forecast and push to html
   for (let i = 0; i < 41; i += 8) {
-    console.log(i);
+   // console.log(i);
+
+   //changing ul to li
     let fivedayEL = document.createElement("ul");
 
     var weatherIcon =
@@ -79,7 +82,7 @@ var displayFiveDayForecast = function (fiveday) {
     fivedayEL.textContent =
       // fiveday.list[i].dt_txt +
 
-      fivedaydate.toDateString() +
+      fivedaydate.toDateString() + " " +
       fiveday.list[i].main.temp +
       " F " +
       fiveday.list[i].wind.speed +
