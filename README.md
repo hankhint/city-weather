@@ -1,11 +1,12 @@
-# cityWeather
+# City Weather
 City Weather Dashboard
 
 ## Features
-Search for a city's weather
-See the current weather
-See the five day forecast
-Search for a new city, previously search city is saved for simple one-click search
+- Search for a city's weather
+- See the current weather
+- See the five day forecast
+- Search for a new city
+- Previous searches persist
 
 ## Technology Used
 
