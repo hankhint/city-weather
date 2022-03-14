@@ -11,65 +11,43 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 
 
-  <title >City Weather Dashboard</title>
+  <title>City Weather Dashboard</title>
 </head>
 
 <body>
-<div class="nav-wrapper">
-  <header >
-    <h1 class="brand-logo center">City Weather Dashboard</h1>
-  </header>
-</div>
-
-  <!-- <div class="row">
-      <form class="col s12">
-        <div class="row">
-          <div class="input-field col s6">
-            <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-            <label for="first_name">First Name</label>
-          </div>
-          <div class="input-field col s6">
-            <input id="last_name" type="text" class="validate">
-            <label for="last_name">Last Name</label>
-          </div>
-        </div> -->
-
-
-  <!-- <div class="row">
-    <form class="col s12">
-      <div class="row">
-
-        <div class="input-field col s6"> -->
-          <input placeholder="Enter City Name to get the weather" id="userInputCityName" type="text" class="validate">
-          <button class="waves-effect waves-light btn" id="userCityNameSubmit">Search City's Weather</button>
-         <!-- <label for="userInputCityName">City Name</label> -->
-        <!-- </div>
-      </div>
+  <div class="nav-wrapper">
+    <header>
+      <h1 class="brand-logo center">City Weather Dashboard</h1>
+    </header>
   </div>
-  </form> -->
+  <!-- search bar -->
+  <div class="input-field col s6"> -->
+    <input placeholder="Enter City Name to get the weather" id="userInputCityName" type="text" class="validate">
+    <button class="waves-effect waves-light btn" id="userCityNameSubmit">Search City's Weather</button>
 
-  <!-- Placeholders for weather info-->
-  <div>
-  <h4 id="cityName"></h4>
-  <img id="weatherIcon"></div>
-  <div id="cityTemp"></div>
-  <div id="weatherIcon"></div>
-  <div id="cityHumid"></div>
-  <div id="cityWind"></div>
-  <div id="cityUV"></div>
-</div>
- <!-- DISPLAYING FIVE DAY FORE
-  CAST-->
- <div class="col s12" id="fiveDayDisplay">
- 
-</div>
+    <!-- Placeholders for weather info-->
+    <div>
+      <h4 id="cityName"></h4>
+      <img id="weatherIcon">
+    </div>
+    <div id="cityTemp"></div>
+    <div id="weatherIcon"></div>
+    <div id="cityHumid"></div>
+    <div id="cityWind"></div>
+    <div id="cityUV"></div>
+  </div>
+
+  <!-- DISPLAYING FIVE DAY FORECAST-->
+  <div class="col s12" id="fiveDayDisplay">
+
+  </div>
 
   <!-- UNORDERED LIST OF SEARCHED CITIES-->
   <ul class="collection" id="searchedCityList">
 
   </ul>
 
- 
+
 
   <script src="assets/js/script.js"> </script>
 </body>

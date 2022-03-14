@@ -11,19 +11,6 @@ var displayWeather = function (city, data) {
   var cityTemp = document.getElementById("cityTemp");
   var cityHumid = document.getElementById("cityHumid");
   var cityWind = document.getElementById("cityWind");
-  // fetch(
-  //   "https://api.openweathermap.org/data/2.5/onecall?lat=" +
-  //     data.coord.lat +
-  //     "&lon=" +
-  //     data.coord.lon +
-  //     "&exclude=hourly,daily&appid=0cab3455fdc5081541be5d657005bb3b"
-  // ).then(function (response) {
-  //   if (response.ok) {
-  //     response.json().then(function (uvInfo) {
-  //       cityUV.textContent = uvInfo.current.uvi;
-  //     });
-  //   }
-  // });
 
   //getting user input
   var userInputCityName = document.getElementById("userInputCityName");
@@ -36,6 +23,7 @@ var displayWeather = function (city, data) {
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
   cityHumid.textContent = data.main.humidity + " % Humidity";
   cityWind.textContent = data.wind.speed + " mph";
+  // TODO: add UV feature
   // cityUV.textContent = "blah"
 };
 
@@ -44,20 +32,16 @@ var displayFiveDayForecast = function (fiveday) {
   //setting keys for where to put the data in the HTML
   var fiveDayDisplay = document.getElementById("fiveDayDisplay");
 
-  //code that works and gets five day forecast info from the fetch request payload
-  //fiveday.list[0].main.temp ,fiveday.list[0].wind.speed ,fiveday.list[0].main.humidity;
-
   // clearing out the old five day for the new five day
-
   fiveDayDisplay.innerText = "";
   //added this line to create UL for new LI elements
-var fiveDayUL = document.createElement("ul");
+  var fiveDayUL = document.createElement("ul");
   //loop through five day forecast and push to html
   console.log(fiveday.list);
   for (let i = 0; i < 40; i += 8) {
-   //console.log(i);
+    //console.log(i);
 
-   //changing ul to li
+    //changing ul to li
     let fivedayEL = document.createElement("ul");
     console.log(fiveday.list[i]);
 
@@ -68,22 +52,14 @@ var fiveDayUL = document.createElement("ul");
     let fivedayIcon = document.createElement("img");
     fivedayIcon.src = weatherIcon;
 
-    //     var utcSeconds = 1234567890;
-    // var d = new Date(0); // The 0 there is the key, which sets the date to the epoch
-    // d.setUTCSeconds(utcSeconds);
-
     //converting UTC seconds into date without time of day
     var fivedayseconds = fiveday.list[i].dt;
     var fivedaydate = new Date(0);
     fivedaydate.setUTCSeconds(fivedayseconds);
 
-    //console.log(fivedaydate.toDateString());
-    //console.log(fiveday.list[i].weather[0].icon);
-
     fivedayEL.textContent =
-      // fiveday.list[i].dt_txt +
-
-      fivedaydate.toDateString() + " " +
+      fivedaydate.toDateString() +
+      " " +
       fiveday.list[i].main.temp +
       " F " +
       fiveday.list[i].wind.speed +
@@ -112,20 +88,6 @@ var callCity = function (city) {
       if (response.ok) {
         response.json().then(function (data) {
           displayWeather(city, data);
-         
-          // fetch(
-          //   "https://api.openweathermap.org/data/2.5/onecall?lat=" +
-          //     data.coord.lat +
-          //     "&lon=" +
-          //     data.coord.lon +
-          //     "&exclude=hourly,daily&appid=0cab3455fdc5081541be5d657005bb3b"
-          // ).then(function (response) {
-          //   if (response.ok) {
-          //     response.json().then(function (uvInfo) {
-          //       cityUV.textContent = uvInfo.current.uvi;
-          //     });
-          //   }
-          // });
 
           //get fiveday forecast
           fetch(
@@ -160,7 +122,6 @@ if (localStorage.getItem("cityLocalStorage") == undefined) {
 var formSubmitHandler = function (event) {
   //taking input from html and putting it into javascript
   var userInputCityName = document.getElementById("userInputCityName");
-  //console.log(userInputCityName);
 
   //get value from input element, userInputCityName, and takes away any spaces on the left or right side, but not in the middle
   var userSearchCityName = userInputCityName.value.trim();
@@ -186,7 +147,7 @@ var formSubmitHandler = function (event) {
     var citiesPreviouslySearched = JSON.parse(
       localStorage.getItem("cityLocalStorage")
     );
-console.log(citiesPreviouslySearched)
+    console.log(citiesPreviouslySearched);
     // adding city name to list of previously searched names
     citiesPreviouslySearched.push(userSearchCityName);
 
