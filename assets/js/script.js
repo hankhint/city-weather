@@ -53,17 +53,18 @@ var displayFiveDayForecast = function (fiveday) {
   //added this line to create UL for new LI elements
 var fiveDayUL = document.createElement("ul");
   //loop through five day forecast and push to html
-  for (let i = 0; i < 41; i += 8) {
-   // console.log(i);
+  console.log(fiveday.list);
+  for (let i = 0; i < 40; i += 8) {
+   //console.log(i);
 
    //changing ul to li
     let fivedayEL = document.createElement("ul");
+    console.log(fiveday.list[i]);
 
     var weatherIcon =
       "http://openweathermap.org/img/w/" +
       fiveday.list[i].weather[0].icon +
       ".png";
-
     let fivedayIcon = document.createElement("img");
     fivedayIcon.src = weatherIcon;
 
