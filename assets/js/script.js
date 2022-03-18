@@ -60,7 +60,7 @@ var displayFiveDayForecast = function (fiveday) {
     fivedayEL.textContent =
       fivedaydate.toDateString() +
       " " +
-      fiveday.list[i].main.temp +
+      Math.round(fiveday.list[i].main.temp) +
       " F " +
       fiveday.list[i].wind.speed +
       " mph " +
