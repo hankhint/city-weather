@@ -14,7 +14,7 @@
   <title>City Weather Dashboard</title>
 </head>
 
-<body>
+<div>
   <div class="nav-wrapper">
     <header>
       <h1 class="brand-logo center">City Weather Dashboard</h1>
@@ -27,29 +27,45 @@
 
     <!-- Placeholders for weather info-->
     <div>
-      <h4 id="cityName"></h4>
+      <!-- <h4 id="cityName"></h4>
       <img id="weatherIcon">
     </div>
     <div id="cityTemp"></div>
     <div id="weatherIcon"></div>
     <div id="cityHumid"></div>
     <div id="cityWind"></div>
-    <div id="cityUV"></div>
-  </div>
+    <div id="cityUV"></div> -->
+    </div>
 
-  <!-- DISPLAYING FIVE DAY FORECAST-->
-  <div class="col s12" id="fiveDayDisplay">
+    <!-- DISPLAYING FIVE DAY FORECAST-->
+    <div class="container">
+      <div class="row">
 
-  </div>
+        <ul id="fiveDayDisplay">
+          <li class="col s12 m6 l2">
+            <div>
+              <h4 id="cityName"></h4>
+              <img id="weatherIcon">
+            </div>
+            <div id="cityTemp"></div>
+            <div id="weatherIcon"></div>
+            <div id="cityHumid"></div>
+            <div id="cityWind"></div>
+            <div id="cityUV"></div>
+          </li>
 
-  <!-- UNORDERED LIST OF SEARCHED CITIES-->
-  <ul class="collection" id="searchedCityList">
+        </ul>
+      </div>
+    </div>
 
-  </ul>
+    <!-- UNORDERED LIST OF SEARCHED CITIES-->
+    <ul class="collection" id="searchedCityList">
+
+    </ul>
 
 
 
-  <script src="assets/js/script.js"> </script>
-</body>
+    <script src="assets/js/script.js"> </script>
+    </body>
 
 </html>

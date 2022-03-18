@@ -35,39 +35,59 @@ var displayFiveDayForecast = function (fiveday) {
   // clearing out the old five day for the new five day
   fiveDayDisplay.innerText = "";
   //added this line to create UL for new LI elements
-  var fiveDayUL = document.createElement("ul");
+ // var fiveDayUL = document.createElement("ul");
+ 
   //loop through five day forecast and push to html
-  console.log(fiveday.list);
-  for (let i = 0; i < 40; i += 8) {
-    //console.log(i);
+  for (let i = 1; i < 40; i += 8) {
 
-    //changing ul to li
-    let fivedayEL = document.createElement("ul");
-    console.log(fiveday.list[i]);
+//     const node = document.createElement("li");
+// const textnode = document.createTextNode("Water");
+// node.appendChild(textnode);
+// document.getElementById("myList").appendChild(node);
 
-    var weatherIcon =
-      "http://openweathermap.org/img/w/" +
-      fiveday.list[i].weather[0].icon +
-      ".png";
-    let fivedayIcon = document.createElement("img");
-    fivedayIcon.src = weatherIcon;
+const fiveDayListEl = document.createElement("li")
+fiveDayListEl.setAttribute("class", "col s12 m6 l2");
+const fiveDayListElNode = document.createTextNode(i);
+fiveDayListEl.appendChild(fiveDayListElNode);
+document.getElementById("fiveDayDisplay").appendChild(fiveDayListEl);
 
-    //converting UTC seconds into date without time of day
-    var fivedayseconds = fiveday.list[i].dt;
-    var fivedaydate = new Date(0);
-    fivedaydate.setUTCSeconds(fivedayseconds);
+// // let thisElementName = "fiveDayEL" + i;
+// // console.log(thisElementName)
+// //     //changing ul to li
+//    let fivedayEL =  document.createElement("li");
+// //     console.log(fivedayEL)
+// //     fivedayEL.setAttribute("id", thisElementName)
+//    // console.log(fiveday.list[i]);
 
-    fivedayEL.textContent =
-      fivedaydate.toDateString() +
-      " " +
-      Math.round(fiveday.list[i].main.temp) +
-      " F " +
-      fiveday.list[i].wind.speed +
-      " mph " +
-      fiveday.list[i].main.humidity +
-      " perecent humidity";
-    fiveDayDisplay.appendChild(fivedayIcon);
-    fiveDayDisplay.appendChild(fivedayEL);
+//     var weatherIcon =
+//       "http://openweathermap.org/img/w/" +
+//       fiveday.list[i].weather[0].icon +
+//       ".png";
+//     let fivedayIcon = document.createElement("img");
+//     fivedayIcon.src = weatherIcon;
+//     //fiveDayDisplay.appendChild(weatherIcon)
+
+//     //document.getElementById('body').appendChild(img);
+
+//     //converting UTC seconds into date without time of day
+//     var fivedayseconds = fiveday.list[i].dt;
+//     var fivedaydate = new Date(0);
+//     fivedaydate.setUTCSeconds(fivedayseconds);
+
+//     fivedayEL.textContent =
+//       fivedaydate.toDateString() +
+//       " " +
+//       Math.round(fiveday.list[i].main.temp) +
+//       " F " +
+//       fiveday.list[i].wind.speed +
+//       " mph " +
+//       fiveday.list[i].main.humidity +
+//       " perecent humidity";
+//       //document.getElementById('body').appendChild(img);
+//    // document.getElementById(thisElementName).appendChild(fivedayIcon);
+//    fiveDayDisplay.appendChild(weatherIcon);
+//    fiveDayDisplay.appendChild(fivedayEL);
+//   //  document.getElementById(thisElementName).appendChild(fivedayEL);
   }
 };
 
