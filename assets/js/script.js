@@ -48,6 +48,7 @@ var displayFiveDayForecast = function (fiveday) {
     fiveDayListEl.setAttribute("class", "col s12 m6 l2");
     let fiveDayListElId = "fiveDayListEl" + i;
     fiveDayListEl.setAttribute("id", fiveDayListElId)
+    console.log(fiveDayListEl)
 console.log(fiveDayListElId);
     //TODO: erase old data before inserting new
    document.getElementById(fiveDayListElId).innerText = "";
