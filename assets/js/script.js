@@ -31,32 +31,38 @@ var displayWeather = function (city, data) {
 var displayFiveDayForecast = function (fiveday) {
   //setting keys for where to put the data in the HTML
   var fiveDayDisplay = document.getElementById("fiveDayDisplay");
-
+console.log(fiveday.list[2])
   // clearing out the old five day for the new five day
   //  fiveDayDisplay.innerText = "";
   //added this line to create UL for new LI elements
   // var fiveDayUL = document.createElement("ul");
 
   //loop through five day forecast and push to html
-  for (let i = 1; i < 40; i += 8) {
+  for (let i = 2; i < 40; i += 8) {
+console.log(i, "--", fiveday.list[i]);
+
     //     const node = document.createElement("li");
     // const textnode = document.createTextNode("Water");
     // node.appendChild(textnode);
     // document.getElementById("myList").appendChild(node);
 
-    const fiveDayListEl = document.createElement("li");
-    fiveDayListEl.setAttribute("class", "col s12 m6 l2");
-    let fiveDayListElId = "fiveDayListEl" + i;
-    fiveDayListEl.setAttribute("id", fiveDayListElId)
-    console.log(fiveDayListEl)
-console.log(fiveDayListElId);
-    //TODO: erase old data before inserting new
-   document.getElementById(fiveDayListElId).innerText = "";
+//     //create new element
+//     const fiveDayListEl = document.createElement("li");
+//     //setting attributes to element
+//     fiveDayListEl.setAttribute("class", "col s12 m6 l2");
+//     //declaring variable to hold unique ID for this element so that it can be populated with weather data
+//     let fiveDayListElId = "fiveDayListEl" + i;
+//     //assigning the unique id to the newly created element
+//     fiveDayListEl.setAttribute("id", fiveDayListElId)
+//     console.log(fiveDayListEl)
+// console.log(fiveDayListElId);
+//     //TODO: erase old data before inserting new
+//    document.getElementById(fiveDayListElId).innerText = "";
 
-    //console.log(fiveDayListEl)
-    const fiveDayListElNode = document.createTextNode(i);
-    fiveDayListEl.appendChild(fiveDayListElNode);
-    document.getElementById("fiveDayDisplay").appendChild(fiveDayListEl);
+//     //console.log(fiveDayListEl)
+//     const fiveDayListElNode = document.createTextNode(i);
+//     fiveDayListEl.appendChild(fiveDayListElNode);
+//     document.getElementById("fiveDayDisplay").appendChild(fiveDayListEl);
 
     // // let thisElementName = "fiveDayEL" + i;
     // // console.log(thisElementName)
@@ -114,6 +120,7 @@ var callCity = function (city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
+          console.log("first fetch", data);
           displayWeather(city, data);
 
           //get fiveday forecast
@@ -127,7 +134,6 @@ var callCity = function (city) {
               //send response to display function
               response.json().then(function (fiveday) {
                 displayFiveDayForecast(fiveday);
-                //console.log(fiveday);
               });
             }
           });
