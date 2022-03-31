@@ -18,6 +18,12 @@ var displayWeather = function (city, data) {
   //putting weather icon in html
   document.getElementById("weatherIcon").setAttribute("src", iconURL);
 
+
+  //getting dt, timezone data
+  console.log("dt :", data.dt);
+  console.log("timezone data :", data.timezone);
+  let todaysDate = new Date();
+  console.log("todays date", todaysDate)
   //putting weather data in html
   cityName.textContent = "Current Weather in " + data.name;
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
