@@ -20,15 +20,20 @@ var displayWeather = function (city, data) {
 
 
 //getting dt, timezone data
- // console.log("dt :", data.dt);
+ console.log("dt :", data.dt);
  var timeforJS = new Date(data.dt * 1000)
 
  //using todatestring to format date
 //console.log(event.toDateString());
-var timeNow = timeforJS.toDateString();
-
+var timeNow = timeforJS.toString();
+console.log(timeNow.toLocaleString())
 //testing the format of the date
- console.log("timezone data :", timeNow)
+ //console.log("timezone data :", timeNow)
+
+ //testing the format of the date from the dt_txt key from the data object
+ //console.log("dt_txt", data.dt_txt)
+
+ //dt_txt
  
  //using toLocaleString to format the date
  //var timeNow = timeforJS.toLocaleString()
