@@ -19,12 +19,30 @@ var displayWeather = function (city, data) {
   document.getElementById("weatherIcon").setAttribute("src", iconURL);
 
 
-  //getting dt, timezone data
-  console.log("dt :", data.dt);
-  console.log("timezone data :", data.timezone);
-  let todaysDate = new Date();
-  console.log("todays date", todaysDate)
+//getting dt, timezone data
+ // console.log("dt :", data.dt);
+ var timeforJS = new Date(data.dt * 1000)
+
+ //using todatestring to format date
+//console.log(event.toDateString());
+var timeNow = timeforJS.toDateString();
+
+//testing the format of the date
+ console.log("timezone data :", timeNow)
+ 
+ //using toLocaleString to format the date
+ //var timeNow = timeforJS.toLocaleString()
+
+ //using timezoneoffset to format the date
+ //console.log(date1.getTimezoneOffset());
+//var timeNow = timeforJS.getTimezoneOffset();
+
+//using getdate to format the date
+//const date1 = birthday.getDate();
+//var timeNow = timeforJS.getDate();
+
   //putting weather data in html
+  cityDate.textContent = timeNow;
   cityName.textContent = "Current Weather in " + data.name;
   cityTemp.textContent = Math.round(data.main.temp) + " °F";
   cityHumid.textContent = data.main.humidity + " % Humidity";
@@ -45,7 +63,7 @@ console.log(fiveday.list[2])
 
   //loop through five day forecast and push to html
   for (let i = 2; i < 40; i += 8) {
-console.log(i, "--", fiveday.list[i]);
+//console.log(i, "--", fiveday.list[i]);
 
     //     const node = document.createElement("li");
     // const textnode = document.createTextNode("Water");
@@ -126,7 +144,7 @@ var callCity = function (city) {
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log("first fetch", data);
+        //  console.log("first fetch", data);
           displayWeather(city, data);
 
           //get fiveday forecast
