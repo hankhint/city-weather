@@ -17,6 +17,7 @@ https://hankhint.github.io/city-weather/
 * [License](#license)
 * [Deployed Site Address](#deployed-site-address)
 * [Screenshots](#screenshots)
+* [Future Development](#future-development)
 * [Questions](#questions)
 
 ## Features
@@ -51,6 +52,9 @@ The application uses the MIT license.
 ## Screenshots
 
 ![image](https://user-images.githubusercontent.com/50533231/147605580-1854ac2b-600f-455a-b157-07db13e5caa3.png)
+
+## Future Development
+Currently the search function makes two fetch requests, one for the current weather and one for the five day forecast.  In the future OpenWeather OneCall api, which combines the info present in both the current apis currently used, will be implemented to streamline the code and improve performance as well.
 
 ## Questions
 
