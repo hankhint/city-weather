@@ -1,6 +1,15 @@
 # City Weather
 City Weather Dashboard
 
+## Description
+Leaving town? Planting a garden? Planning a picnic? Use this site to get the weather forecast for any city in the world. See today's weather and also the five day forecast. 
+
+This site uses the OpenWeather API to get weather data and displays it in an easy-to-read way.
+
+## Deployed Site Address
+
+https://hankhint.github.io/city-weather/
+
 # Table of Contents 
 * [Features](#features)
 * [Technology Used](#technology-used)
@@ -19,22 +28,18 @@ City Weather Dashboard
 
 ## Technology Used
 
-Materialize
-https://materializecss.com/
-
 uses the OpenWeather API to get weather data
 https://openweathermap.org/api
 
-and JavaScript, HTML, and CSS
+and JavaScript, HTML and 
+Materialize CSS
+https://materializecss.com/
+
 
 ## License
 
 The application uses the MIT license.
 ![Badge](https://img.shields.io/badge/License-MIT-blue.svg)
-
-## Deployed Site Address
-
-https://hankhint.github.io/city-weather/
 
 ## Screenshots
 
@@ -42,4 +47,4 @@ https://hankhint.github.io/city-weather/
 
 ## Questions
 
-Send questions or comments to hankhint art geeemail and find me on github https://github.com/hankhint
+Send questions or comments to hankhint@gmail.com and find me on github https://github.com/hankhint
