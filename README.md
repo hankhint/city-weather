@@ -2,7 +2,7 @@
 City Weather Dashboard
 
 ## Description
-Leaving town? Planting a garden? Planning a picnic? Use this site to get the weather forecast for any city in the world. See today's weather and also the five day forecast. 
+Leaving town? Planting a garden? Planning a picnic? Use this site to get the weather forecast for any city in the world. See today's weather and also the five day forecast.  Searched cities are saved so you can easily search for them again.
 
 This site uses the OpenWeather API to get weather data and displays it in an easy-to-read way.
 
@@ -28,13 +28,14 @@ https://hankhint.github.io/city-weather/
 
 ## Technology Used
 
-uses the OpenWeather API to get weather data
+Uses the OpenWeather API to get weather data
 https://openweathermap.org/api
 
 and JavaScript, HTML and 
 Materialize CSS
 https://materializecss.com/
 
+For easy access searched cities are saved in local storage.
 
 ## License
 
