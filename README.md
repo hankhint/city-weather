@@ -29,8 +29,8 @@ https://hankhint.github.io/city-weather/
 
 ## How to Use
 
-Enter a city name into the search bar, hit enter or click "Search City's Weather"
-Click city names below to see the weather of a previously searched city
+- Enter a city name into the search bar, hit enter or click "Search City's Weather"
+- Click city names below to see the weather of a previously searched city
 
 ## Technology Used
 
