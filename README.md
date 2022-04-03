@@ -12,6 +12,7 @@ https://hankhint.github.io/city-weather/
 
 # Table of Contents 
 * [Features](#features)
+* [How to use](#how-to-use)
 * [Technology Used](#technology-used)
 * [License](#license)
 * [Deployed Site Address](#deployed-site-address)
@@ -25,6 +26,11 @@ https://hankhint.github.io/city-weather/
 - See the five day forecast
 - Search for a new city
 - Previous searches persist
+
+## How to Use
+
+Enter a city name into the search bar, hit enter or click "Search City's Weather"
+Click city names below to see the weather of a previously searched city
 
 ## Technology Used
 
